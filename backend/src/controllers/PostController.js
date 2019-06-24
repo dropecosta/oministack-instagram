@@ -30,7 +30,12 @@ module.exports = {
         // return res.json(req.file);
 
         //Redimensionamento da imagem
-        await sharp(req.file.path).resize(500).jpeg({ quality: 70 }).toFile(path.resolve(req.file.destination, 'resized', fileName));
+        await sharp(req.file.path)
+            .resize(500)
+            .jpeg({ quality: 70 })
+            .toFile(
+                path.resolve(req.file.destination, 'resized', fileName)
+            );
 
         // Apagando a imagem original, deixando apenas a redimensionada
         fs.unlinkSync(req.file.path);
@@ -46,7 +51,7 @@ module.exports = {
 
         // //Indica que um post acabou de ser cadastrado
         // //Envia para todos usuários através de socket
-        // req.io.emit('post', post);
+        req.io.emit('post', post);
 
         return res.json(post);
     }
