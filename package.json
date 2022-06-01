@@ -3,6 +3,6 @@
     "nodemon": "^1.19.1"
   },
   "dependencies": {
-    "sharp": "^0.22.1"
+    "sharp": "^0.30.5"
   }
 }
